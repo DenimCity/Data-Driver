@@ -5,3 +5,4 @@
 * React
 * GraphQl
 * Relay
+* Flux
