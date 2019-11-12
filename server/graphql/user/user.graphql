@@ -1,4 +1,5 @@
 type User {
+	_id: String
 	username: String
 	password: String
 	email: String
@@ -7,4 +8,14 @@ type User {
 
 type Query {
 	users: [User!]!
+}
+
+input Register {
+	username: String!
+	password: String!
+	email: String!
+}
+
+type Mutation {
+	createUser(input: Register!): User!
 }
