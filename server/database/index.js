@@ -1,15 +1,18 @@
 import mongoose from 'mongoose';
+import { logger } from '../utils';
 
 export default async function startDBConnection() {
-	console.log('Attempting to Connect to MongoDB..........');
+	logger.debug('Attempting to Connect to MongoDB');
 	try {
 		await mongoose.connect(process.env.MONGODB_URI, {
 			useCreateIndex: true,
 			useNewUrlParser: true,
 			useUnifiedTopology: true
 		});
-		console.log('Connected to MongoDB..........');
+		logger.debug('Connected to MongoDB');
+		return true;
 	} catch (error) {
-		console.log('Error Connecting to MongoDB..........' + error);
+		logger.error('Error Connecting to MongoDB' + error);
+		throw new Error(error);
 	}
 }
