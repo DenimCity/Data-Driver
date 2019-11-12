@@ -6,11 +6,18 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "babel-node server.js",
-		"dev": "nodemon --exec babel-node server.js"
+		"dev": "nodemon --exec babel-node server.js",
+		"dev:local": "concurrently \" npm run dev\" \"cd ./client  && npm run start \" "
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/DenimCity/Data-Driver.git"
+	},
+	"nodemonConfig": {
+		"ignore": [
+			"test/*"
+		],
+		"ext": "js,json,graphql"
 	},
 	"keywords": [],
 	"author": "",
@@ -22,7 +29,10 @@
 	"dependencies": {
 		"babel-preset-env": "^1.7.0",
 		"babel-preset-stage-3": "^6.24.1",
+		"concurrently": "^5.0.0",
+		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
+		"mongoose": "^5.7.10",
 		"nodemon": "^1.19.4"
 	},
 	"devDependencies": {
